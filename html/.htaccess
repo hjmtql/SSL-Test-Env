@@ -1,0 +1,11 @@
+RewriteEngine on
+
+# http -> https
+RewriteCond %{REQUEST_URI} ^/ssl.html$
+RewriteCond %{HTTPS} off
+RewriteRule ^.*$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R]
+
+# https -> http
+RewriteCond %{REQUEST_URI} ^/http.html$
+RewriteCond %{HTTPS} on
+RewriteRule ^.*$ http://%{HTTP_HOST}%{REQUEST_URI} [R,L]
